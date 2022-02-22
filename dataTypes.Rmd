@@ -1,0 +1,103 @@
+---
+title: "Data Structures in R"
+author: "Elizabeth Permina"
+date: "2/22/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(DiagrammeR)
+```
+
+## Data classes
+
+Everything is a vector
+Character (string), numeric, integer, double, factor
+Factor is an integer
+## Data types
+
+```{r}
+grViz("
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, fontsize = 10]
+
+  # several 'node' statements
+  node [shape = box,
+        fontname = Helvetica]
+  DataStructures; homogenous; heterogenous; atomicVector; matrix; list; dataFrame; dataframe; tbl_df; tbl
+
+
+
+  # several 'edge' statements
+  DataStructures->homogenous
+  DataStructures->heterogenous
+  homogenous->atomicVector homogenous->matrix
+  heterogenous-> dataFrame
+  heterogenous-> list
+  dataFrame -> dataframe
+  dataFrame -> tbl_df
+  dataFrame -> tbl
+  
+}
+")
+```
+
+Atomic vector, assumed data classes
+
+```{r vector}
+n_vector<-c(1,2,3,5) 
+n_vector
+another_vector<-c(rep(1, 3), rep(2, 5), runif(4, min = 3, max = 6))
+another_vector
+ch_vector<-c("apple", 45, "hot cross bun")
+ch_vector
+c(another_vector, ch_vector)
+
+```
+
+A matrix is the special case of a two-dimensional array.
+
+A matrix example:
+
+```{r matrix}
+m<- matrix(c(1,2,3, 11,12,13), nrow = 2, ncol = 3, byrow = TRUE,
+               dimnames = list(c("row1", "row2"),
+                               c("C.1", "C.2", "C.3")))
+m
+```
+
+A list example
+
+```{r}
+my_list <- list(a=ch_vector, b=n_vector, c = another_vector, m = m)
+my_list
+```
+
+```{r}
+my_list[1]
+```
+
+```{r}
+my_list[[1]]
+```
+
+```{r}
+my_list$a[[1]]
+```
+you can even do a list of lists
+
+## Working with data frames
+Inconsistent data type
+### Subsetting in base R
+list of column names, boolean vector, list of column numbers
+[ and [[
+$ operator
+
+#### dropping levels
+
+### tibble - tbl and tbl_df
+#### vector or dataframe

@@ -1,0 +1,23 @@
+---
+title: "charts"
+author: "Elizabeth Permina"
+date: "2/12/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if(!require("plotrix"))
+{install.packages("plotrix")}
+if(!require("DiagrammeR")){
+  install.packages("DiagrammeR")
+}
+if(!require("plan")){
+  install.packages("plan")
+}
+library(plan)
+library(DiagrammeR)
+library(plotrix)
+```
+
+## charts

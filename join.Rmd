@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+library(datasets)
+data("USArrests")
+```
+
+```{r}
+dim(USArrests)
+```
+
+```{r}
+
+numbers1<-1:50
+numbers2<-51:100
+letter_df=c(rep("a", 10), rep("b", 10), rep("c", 10), rep("d", 10), rep("e", 10))
+
+a<-data.frame(l=letter_df, n1 = numbers1
+  
+  )
+b<-data.frame(l=letter_df, n2 = numbers2)
+d<-b[1:20, ]
+e<-a[15:35,]
+```
+
+```{r}
+full<-full_join(d,e)
+left<-left_join(d,e)
+right<-right_join(d,e)
+inner<-inner_join(d,e)
+```
+
+```{r}
+left
+right
+full
+inner
+
+```
+
